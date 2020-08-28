@@ -1,0 +1,29 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- script: echo Hello, world!
+  displayName: 'Run a one-line script'
+- task: ContrastIntegration@2
+  inputs:
+    ContrastService: 'apptwo'
+    Application: '0af817cd-3886-4f9e-80f8-9bd3e33dfabd'
+    StatusFilter: 'Reported, Suspicious, Confirmed'
+    CriticalLimit: '0'
+    HighLimit: '0'
+    MediumLimit: '0'
+    LowLimit: '0'
+    NoteLimit: '0'
+
+- script: |
+    echo Add other tasks to build, test, and deploy your project.
+    echo See https://aka.ms/yaml
+  displayName: 'Run a multi-line script'
