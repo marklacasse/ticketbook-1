@@ -28,6 +28,5 @@ stages:
         MediumLimit: '1'
         LowLimit: '1'
         NoteLimit: '0'
-        LowLimit: '-1'
-        NoteLimit: '-1'
+
 
