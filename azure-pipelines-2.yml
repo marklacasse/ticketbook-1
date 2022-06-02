@@ -1,19 +1,33 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
+# Docker
+# Build a Docker image
+# https://docs.microsoft.com/azure/devops/pipelines/languages/docker
 
 trigger:
 - master
 
-pool:
-  vmImage: ubuntu-latest
+resources:
+- repo: self
 
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+variables:
+  tag: '$(Build.BuildId)'
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+stages:
+- stage: Verify
+  jobs:
+  - job: Verify
+    pool: server
+    steps: 
+    - task: ContrastIntegration@2
+      inputs:
+        ContrastService: 'apptwo'
+        Application: '75925bd3-3d06-401c-9fc6-3c8378d0d091'
+        StatusFilter: 'Reported, Suspicious, Confirmed'
+        AppVersionFilter: '42'
+        CriticalLimit: '1'
+        HighLimit: '1'
+        MediumLimit: '1'
+        LowLimit: '1'
+        NoteLimit: '0'
+        LowLimit: '-1'
+        NoteLimit: '-1'
+
