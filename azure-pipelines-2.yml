@@ -10,10 +10,6 @@ resources:
 
 variables:
   tag: '$(Build.BuildId)'
-name: $(TeamProject)_$(Build.DefinitionName)_$(SourceBranchName)_$(Date:yyyyMMdd)$(Rev:.r)
-
-steps:
-  - script: echo '$(Build.BuildNumber)' # outputs customized build number like project_def_master_20200828.1
 
 stages:
 - stage: Verify
@@ -26,7 +22,7 @@ stages:
         ContrastService: 'apptwo'
         Application: '75925bd3-3d06-401c-9fc6-3c8378d0d091'
         StatusFilter: 'Reported, Suspicious, Confirmed'
-        AppVersionFilter: '$(Build.BuildId)'
+        AppVersionFilter: '$(TeamProject)_$(Build.DefinitionName)_$(SourceBranchName)_$(Date:yyyyMMdd)$(Rev:.r)'
         CriticalLimit: '1'
         HighLimit: '1'
         MediumLimit: '1'
