@@ -8,10 +8,11 @@ trigger:
 
 pool:
   vmImage: 'ubuntu-latest'
-echo 'testing here'
-echo $(Release.ReleaseName)
-
-echo $name
+- script: |
+  echo 'testing here'
+  echo $(Release.ReleaseName)
+name: $(TeamProject)_$(Build.DefinitionName)_$(SourceBranchName)_$(Date:yyyyMMdd)$(Rev:.r)
+  echo $name
 
 steps:
 - script: echo Hello, world!
