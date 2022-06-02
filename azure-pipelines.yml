@@ -2,7 +2,17 @@
 # Start with a minimal pipeline that you can customize to build and deploy your code.
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
-
+- task: ContrastIntegration@2
+  inputs:
+    ContrastService: 'apptwo'
+    Application: '75925bd3-3d06-401c-9fc6-3c8378d0d091'
+    StatusFilter: 'Reported, Suspicious, Confirmed'
+    AppVersionFilter: '42'
+    CriticalLimit: '1'
+    HighLimit: '1'
+    MediumLimit: '1'
+    LowLimit: '1'
+    NoteLimit: '1'
 trigger:
 - master
 
