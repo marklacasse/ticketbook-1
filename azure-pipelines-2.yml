@@ -22,7 +22,7 @@ stages:
         ContrastService: 'apptwo'
         Application: '75925bd3-3d06-401c-9fc6-3c8378d0d091'
         StatusFilter: 'Reported, Suspicious, Confirmed'
-        AppVersionFilter: '$(Rev:.r)'
+        AppVersionFilter: '$(Build.BuildNumber)'
         CriticalLimit: '1'
         HighLimit: '1'
         MediumLimit: '1'
