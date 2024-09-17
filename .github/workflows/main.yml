@@ -22,3 +22,4 @@ jobs:
           apiServiceKey: ${{ secrets.CONTRAST__API__SERVICE_KEY }}
           apiOrgId: ${{ secrets.CONTRAST__API__ORGANIZATION }}
           resourceGroup: Omnicom-test
+          projectName: "ticket book"
